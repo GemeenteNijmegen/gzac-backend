@@ -16,6 +16,8 @@ logging:
         name: /tmp/spring.log
     level:
         com.ritense: ${LOGGING_LEVEL_COM_RITENSE:INFO}
+        org.springframework.security.web.access: TRACE
+        org.springframework.security.authorization: TRACE
 
 management:
     endpoint:
