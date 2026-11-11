@@ -84,7 +84,6 @@ dependencies {
 
     // Core plugins not included in valtimo-gzac-dependencies
     implementation("com.ritense.valtimo:smartdocuments")
-    implementation("com.ritense.valtimo:exact-plugin")
 
     // Community plugins (https://github.com/generiekzaakafhandelcomponent/Plugins)
     implementation("com.ritense.valtimoplugins:archief:$archiefPluginVersion")
