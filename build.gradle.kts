@@ -68,7 +68,6 @@ val publictaskPluginVersion: String by project
 val slackPluginVersion: String by project
 val smtpmailPluginVersion: String by project
 val spotlerPluginVersion: String by project
-val suwinetPluginVersion: String by project
 val tokenAuthenticationPluginVersion: String by project
 val valuemapperPluginVersion: String by project
 val xentialPluginVersion: String by project
@@ -103,14 +102,6 @@ dependencies {
     implementation("com.ritense.valtimoplugins:slack:$slackPluginVersion")
     implementation("com.ritense.valtimoplugins:smtpmail:$smtpmailPluginVersion")
     implementation("com.ritense.valtimoplugins:spotler:$spotlerPluginVersion")
-    implementation("com.ritense.valtimoplugins:suwinet:$suwinetPluginVersion") {
-        // Suwinet pulls com.sun.xml.bind:jaxb-{core,xjc,jxc} 4.0.x, which clash (same jar file name)
-        // with the org.glassfish.jaxb artifacts Valtimo ships at the same version. Same classes, so
-        // keep only the glassfish ones.
-        exclude(group = "com.sun.xml.bind", module = "jaxb-core")
-        exclude(group = "com.sun.xml.bind", module = "jaxb-xjc")
-        exclude(group = "com.sun.xml.bind", module = "jaxb-jxc")
-    }
     implementation("com.ritense.valtimoplugins:token-authentication:$tokenAuthenticationPluginVersion")
     implementation("com.ritense.valtimoplugins:valuemapper:$valuemapperPluginVersion")
     implementation("com.ritense.valtimoplugins:xential:$xentialPluginVersion")
