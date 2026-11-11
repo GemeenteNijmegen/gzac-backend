@@ -1,7 +1,17 @@
 {
-    "changesetId": "gemeente-nijmegen-permissions-v2",
+    "changesetId": "gemeente-nijmegen-permissions-v3",
     "permissions": [
         {
+            "resourceType": "com.ritense.case.domain.CaseTab",
+            "action": "view",
+            "roleKey": "ROLE_ADMIN"
+        },
+        {
+            "resourceType": "com.ritense.case.domain.CaseTab",
+            "action": "view",
+            "roleKey": "ROLE_USER"
+        },
+        {
             "resourceType": "com.ritense.case_.domain.definition.CaseDefinition",
             "action": "view",
             "roleKey": "ROLE_ADMIN"
@@ -19,16 +29,6 @@
         {
             "resourceType": "com.ritense.case_.domain.definition.CaseDefinition",
             "action": "view_list",
-            "roleKey": "ROLE_USER"
-        },
-        {
-            "resourceType": "com.ritense.case.domain.CaseTab",
-            "action": "view",
-            "roleKey": "ROLE_ADMIN"
-        },
-        {
-            "resourceType": "com.ritense.case.domain.CaseTab",
-            "action": "view",
             "roleKey": "ROLE_USER"
         },
         {
@@ -103,6 +103,21 @@
         },
         {
             "resourceType": "com.ritense.document.domain.impl.JsonSchemaDocument",
+            "action": "export",
+            "roleKey": "ROLE_ADMIN"
+        },
+        {
+            "resourceType": "com.ritense.document.domain.impl.JsonSchemaDocument",
+            "action": "inspect",
+            "roleKey": "ROLE_ADMIN"
+        },
+        {
+            "resourceType": "com.ritense.document.domain.impl.JsonSchemaDocument",
+            "action": "inspect_modify",
+            "roleKey": "ROLE_ADMIN"
+        },
+        {
+            "resourceType": "com.ritense.document.domain.impl.JsonSchemaDocument",
             "action": "view",
             "roleKey": "ROLE_USER"
         },
@@ -237,6 +252,16 @@
             "roleKey": "ROLE_USER"
         },
         {
+            "resourceType": "com.ritense.iko.domain.IkoView",
+            "action": "view",
+            "roleKey": "ROLE_ADMIN"
+        },
+        {
+            "resourceType": "com.ritense.iko.domain.IkoView",
+            "action": "view_list",
+            "roleKey": "ROLE_ADMIN"
+        },
+        {
             "resourceType": "com.ritense.note.domain.Note",
             "action": "view_list",
             "roleKey": "ROLE_ADMIN"
@@ -355,6 +380,46 @@
             "resourceType": "com.ritense.resource.authorization.ResourcePermission",
             "action": "view_list",
             "roleKey": "ROLE_USER"
+        },
+        {
+            "resourceType": "com.ritense.team.domain.Team",
+            "action": "view",
+            "roleKey": "ROLE_ADMIN"
+        },
+        {
+            "resourceType": "com.ritense.team.domain.Team",
+            "action": "view_list",
+            "roleKey": "ROLE_ADMIN"
+        },
+        {
+            "resourceType": "com.ritense.team.domain.Team",
+            "action": "create",
+            "roleKey": "ROLE_ADMIN"
+        },
+        {
+            "resourceType": "com.ritense.team.domain.Team",
+            "action": "modify",
+            "roleKey": "ROLE_ADMIN"
+        },
+        {
+            "resourceType": "com.ritense.team.domain.Team",
+            "action": "delete",
+            "roleKey": "ROLE_ADMIN"
+        },
+        {
+            "resourceType": "com.ritense.team.domain.Team",
+            "action": "assign",
+            "roleKey": "ROLE_ADMIN"
+        },
+        {
+            "resourceType": "com.ritense.valtimo.contract.authentication.User",
+            "action": "view",
+            "roleKey": "ROLE_ADMIN"
+        },
+        {
+            "resourceType": "com.ritense.valtimo.contract.authentication.User",
+            "action": "view_list",
+            "roleKey": "ROLE_ADMIN"
         },
         {
             "resourceType": "com.ritense.valtimo.operaton.domain.OperatonExecution",
