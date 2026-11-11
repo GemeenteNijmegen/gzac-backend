@@ -34,19 +34,44 @@ java.sourceCompatibility = JavaVersion.VERSION_21
 java.targetCompatibility = JavaVersion.VERSION_21
 
 repositories {
+    maven {
+        url = uri("https://valtimo-releases.s3.eu-central-1.amazonaws.com/")
+        content { includeGroupAndSubgroups("com.ritense") }
+        mavenContent { releasesOnly() }
+    }
+    maven {
+        url = uri("https://valtimo-snapshots.s3.eu-central-1.amazonaws.com/")
+        content { includeGroupAndSubgroups("com.ritense") }
+        mavenContent { snapshotsOnly() }
+    }
     mavenCentral()
     maven { url = uri("https://s01.oss.sonatype.org/content/repositories/releases/") }
     maven { url = uri("https://s01.oss.sonatype.org/content/repositories/snapshots/") }
-    maven { url = uri("https://valtimo-releases.s3.eu-west-par.io.cloud.ovh.net/") }
-    maven { url = uri("https://valtimo-snapshots.s3.eu-west-par.io.cloud.ovh.net/") }
-    maven { url = uri("https://valtimo-releases.s3.eu-central-1.amazonaws.com/") }
-    maven { url = uri("https://valtimo-snapshots.s3.eu-central-1.amazonaws.com/") }
 }
 
 val valtimoVersion: String by project
 val mockitoKotlinVersion: String by project
+val archiefPluginVersion: String by project
+val cloudEventPluginVersion: String by project
+val externeKlanttaakPluginVersion: String by project
 val freemarkerPluginVersion: String by project
+val haalCentraalAuthenticationPluginVersion: String by project
+val haalCentraalPluginVersion: String by project
+val kvkHandelsregisterPluginVersion: String by project
+val mTLSSSLContextPluginVersion: String by project
+val notifyNlPluginVersion: String by project
+val objectManagementPluginVersion: String by project
+val oipKlanttaakPluginVersion: String by project
+val openProductPluginVersion: String by project
+val openklantPluginVersion: String by project
+val publictaskPluginVersion: String by project
+val slackPluginVersion: String by project
 val smtpmailPluginVersion: String by project
+val spotlerPluginVersion: String by project
+val suwinetPluginVersion: String by project
+val tokenAuthenticationPluginVersion: String by project
+val valuemapperPluginVersion: String by project
+val xentialPluginVersion: String by project
 
 dependencies {
     implementation(platform("com.ritense.valtimo:valtimo-dependency-versions:$valtimoVersion"))
@@ -57,10 +82,39 @@ dependencies {
 
     implementation("org.postgresql:postgresql")
 
-    // Plugins
+    // Core plugins not included in valtimo-gzac-dependencies
     implementation("com.ritense.valtimo:smartdocuments")
+    implementation("com.ritense.valtimo:exact-plugin")
+
+    // Community plugins (https://github.com/generiekzaakafhandelcomponent/Plugins)
+    implementation("com.ritense.valtimoplugins:archief:$archiefPluginVersion")
+    implementation("com.ritense.valtimoplugins:cloud-event:$cloudEventPluginVersion")
+    implementation("com.ritense.valtimoplugins:externe-klanttaak:$externeKlanttaakPluginVersion")
     implementation("com.ritense.valtimoplugins:freemarker:$freemarkerPluginVersion")
+    implementation("com.ritense.valtimoplugins:haal-centraal-authentication:$haalCentraalAuthenticationPluginVersion")
+    implementation("com.ritense.valtimoplugins:haal-centraal:$haalCentraalPluginVersion")
+    implementation("com.ritense.valtimoplugins:kvk-handelsregister:$kvkHandelsregisterPluginVersion")
+    implementation("com.ritense.valtimoplugins:mTLS-SSLContext:$mTLSSSLContextPluginVersion")
+    implementation("com.ritense.valtimoplugins:notify-nl:$notifyNlPluginVersion")
+    implementation("com.ritense.valtimoplugins:object-management:$objectManagementPluginVersion")
+    implementation("com.ritense.valtimoplugins:oip-klanttaak:$oipKlanttaakPluginVersion")
+    implementation("com.ritense.valtimoplugins:open-product:$openProductPluginVersion")
+    implementation("com.ritense.valtimoplugins:openklant:$openklantPluginVersion")
+    implementation("com.ritense.valtimoplugins:publictask:$publictaskPluginVersion")
+    implementation("com.ritense.valtimoplugins:slack:$slackPluginVersion")
     implementation("com.ritense.valtimoplugins:smtpmail:$smtpmailPluginVersion")
+    implementation("com.ritense.valtimoplugins:spotler:$spotlerPluginVersion")
+    implementation("com.ritense.valtimoplugins:suwinet:$suwinetPluginVersion") {
+        // Suwinet pulls com.sun.xml.bind:jaxb-{core,xjc,jxc} 4.0.x, which clash (same jar file name)
+        // with the org.glassfish.jaxb artifacts Valtimo ships at the same version. Same classes, so
+        // keep only the glassfish ones.
+        exclude(group = "com.sun.xml.bind", module = "jaxb-core")
+        exclude(group = "com.sun.xml.bind", module = "jaxb-xjc")
+        exclude(group = "com.sun.xml.bind", module = "jaxb-jxc")
+    }
+    implementation("com.ritense.valtimoplugins:token-authentication:$tokenAuthenticationPluginVersion")
+    implementation("com.ritense.valtimoplugins:valuemapper:$valuemapperPluginVersion")
+    implementation("com.ritense.valtimoplugins:xential:$xentialPluginVersion")
 
     // Kotlin logger
     implementation("io.github.oshai:kotlin-logging")
