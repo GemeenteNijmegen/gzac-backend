@@ -197,6 +197,11 @@ valtimo:
         whitelist:
             hosts:
                 - localhost
+    # Draft mode allows creating/editing case definitions and global configuration
+    # (plugins, process links, etc.) via the admin UI. By default Valtimo only allows
+    # this when one of the Spring profiles inttest, dev or test is active.
+    draft:
+        enabled: ${VALTIMO_DRAFT_ENABLED:false}
     authorization:
         dashboard:
             enabled: true
